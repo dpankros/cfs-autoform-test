@@ -1,0 +1,67 @@
+<head>
+    <title>cfs-autoform-test</title>
+</head>
+<body>
+  {{> layout}}
+
+  <!-- Hidden elements-->
+  {{>addSingle}}
+  {{>updateQuickFormModalSingle}}
+  {{>updateAutoFormModalSingle}}
+
+
+  {{>addMulti}}
+  {{>updateQuickFormModalMulti}}
+  {{>updateAutoFormModalMulti}}
+
+</body>
+
+
+<template name="layout">
+  {{>header}}
+  {{>instructions}}
+
+  {{>navbarSingle}}
+  {{>single_files}}
+
+  {{>navbarMulti}}
+  {{>multi_files}}
+</template>
+
+<template name="header">
+    <div class="page-header">
+        <h1 class="Header">Cfs-Autoform Test</h1>
+    </div>
+</template>
+
+<template name="instructions">
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <ul>
+                <li>Click <span class="btn btn-default btn-xs"><span
+                        class="glyphicon glyphicon-plus"></span>Add</span>
+                    next to Single to add a file and test the cfs-file control.
+                </li>
+                <li>Click <span class="btn btn-default btn-xs"><span
+                        class="glyphicon glyphicon-plus"></span>Add</span>
+                    next to Multi to add multiple files and test the
+                    cfs-files control.
+                </li>
+                <li>Once documents are created, options to edit or remove
+                    the document will be shown next to the document.
+                </li>
+                <li>This application serves as a test of CfsAutoForm and as
+                    an example of how to use CfsAutoForm in your own
+                    applications.
+                </li>
+            </ul>
+        </div>
+    </div>
+</template>
+
+
+<template name="insertQForm">
+    <div class="form">
+      {{> quickForm id="quickForm" type="insert" collection="Docs"}}
+    </div>
+</template>

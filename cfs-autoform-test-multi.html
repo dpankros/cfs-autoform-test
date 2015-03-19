@@ -1,0 +1,143 @@
+
+
+<template name="navbarMulti">
+    <nav class="navbar navbar-default">
+        <div class="navbar-header">
+            <span class="navbar-brand">Multi</span>
+        </div>
+        <div class="container-fluid">
+            <div class="btn-group" role="group">
+                <button class="add btn btn-default navbar-btn">
+                  <span class="glyphicon glyphicon-plus" aria-hidden="true">
+                  </span>
+                    Add
+                </button>
+            </div>
+        </div>
+    </nav>
+</template>
+<template name="multi_files">
+    {{#if hasRows}}
+    <table class="table">
+        <thead>
+        <tr>
+            <th>id</th>
+            <th>Name</th>
+            <th>File Id</th>
+            <th>Thumbnails</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+            <th>&nbsp;</th>
+        </tr>
+        </thead>
+        <tbody>
+        {{#each file}}
+          {{> multi_row}}
+        {{/each}}
+        </tbody>
+    </table>
+    {{/if}}
+</template>
+
+<template name="multi_row">
+    <tr>
+        <th scope="row">{{_id}}</th>
+        <td>{{name}}</td>
+        <td>{{fileId}}</td>
+        <td>
+          {{#if hasThumbnail}}
+            {{#each thumbnail}}
+                <img class="thumbnail  img-thumbnail img-rounded"
+                     src="{{thumbnail}}"/>
+            {{/each}}
+          {{else}}
+              <i class="fa {{icon}} fa-4x"></i>
+          {{/if}}
+        </td>
+        <td><a id="removeRow" href="#">Remove</a></td>
+        <td><a class="af" id="af-{{id}}" href="#">AutoForm</a></td>
+        <td><a class="qf" id="qf-{{id}}" href="#">QuickForm</a></td>
+    </tr>
+</template>
+
+
+
+
+<template name="updateAutoFormModalMulti">
+    <div class="modal fade" id="updateAutoFormMulti">
+        <div class="modal-dialog">
+            <div class="modal-content">
+              {{#autoForm id="updateAFMulti" type="update" collection="Docs"
+              doc=file}}
+                  <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal"
+                              aria-label="Close"><span
+                              aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">Update File Auto Form</h4>
+                  </div>
+                  <div class="modal-body">
+                    {{> afQuickField name="name"}}
+                    {{> afQuickField name="fileId" collection="files"}}
+                  </div>
+                  <div class="modal-footer">
+                      <button id="updateFormClose" type="button"
+                              class="btn btn-default" data-dismiss="modal">Close
+                      </button>
+                      <button type="submit" class="btn btn-primary">Save
+                          changes
+                      </button>
+                  </div>
+              {{/autoForm}}
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+</template>
+
+<template name="updateQuickFormModalMulti">
+    <div class="modal fade" id="updateQuickFormMulti">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Update File Quick Form</h4>
+                </div>
+                <div class="modal-body">
+                  {{>quickForm id="updateQFMulti" type="update"
+                  collection="Docs" doc=file}}
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+</template>
+
+
+
+<template name="addMulti">
+    <div class="modal fade" id="addMultiModal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal"
+                            aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Add Mutliple Files</h4>
+                </div>
+                <div class="modal-body">
+                  {{> quickForm id="addMulti" type="insert"
+                  collection="MultiDocs"}}
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
+</template>

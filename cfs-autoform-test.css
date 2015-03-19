@@ -1,0 +1,51 @@
+/* CSS declarations go here */
+
+body {
+    font-family: "Helvetica Neue Light", "HelveticaNeue-Light", "Helvetica Neue", Calibri, Helvetica, Arial, sans-serif;
+    /*margin: 0px;*/
+    /*font-size: 12px;*/
+    /*white-space: nowrap;*/
+}
+/*.thumbnail {*/
+    /*width: 120px;*/
+/*}*/
+/*.header {*/
+    /*font-weight: bold;*/
+/*}*/
+/*.row {*/
+
+/*}*/
+
+/*h1 {*/
+    /*font-size: 18pt;*/
+    /*font-weight: bold;*/
+    /*padding: 24px 0px 24px 0px;*/
+    /*width: 100%;*/
+    /*background: #6a6db5;*/
+    /*vertical-align: baseline;*/
+    /*color: #FFFFFF;*/
+    /*text-align: center;*/
+    /*margin: 0px;*/
+/*}*/
+
+/*h2 {*/
+    /*font-size: 12pt;*/
+    /*font-weight: bold;*/
+    /*padding: 0px 12px 0px 12px ;*/
+    /*margin: 0px 0px 6px 0px;*/
+    /*width: 100%;*/
+    /*background: #dcdcdc;*/
+/*}*/
+
+/*
+All but the thumbnail column
+*/
+th:first-of-type,
+th:nth-child(2),
+th:nth-child(3),
+/*not thumbnail*/
+th:nth-child(5),
+th:nth-child(6),
+th:nth-child(7){
+    width:100px
+}
