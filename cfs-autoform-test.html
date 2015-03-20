@@ -14,6 +14,7 @@
   {{>updateQuickFormModalMulti}}
   {{>updateAutoFormModalMulti}}
 
+  {{>opts}}
 </body>
 
 
@@ -63,5 +64,63 @@
 <template name="insertQForm">
     <div class="form">
       {{> quickForm id="quickForm" type="insert" collection="Docs"}}
+    </div>
+</template>
+
+
+<template name="opts">
+    <div class="panel panel-default">
+        <div class="panel-heading">Options</div>
+        <div class="panel-body">
+            <form class="form-horizontal">
+
+                <div class="form-group">
+                    <label class="col-md-1 control-label"
+                           for="uploadRadio">Upload</label>
+                    <div class="btn-group" data-toggle="buttons" id="uploadRadio">
+                        <label class="btn btn-default active" for="uploadOnSelect">
+                          <input type="radio" autocomplete="off" id="uploadOnSelect"
+                                 checked>When
+                            Selected
+                        </label>
+
+                        <label class="btn btn-default" for="uploadOnSubmit">
+                            <input type="radio" autocomplete="off"
+                                   id="uploadOnSubmit">On Submit
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                <label class="col-md-1 control-label" for="deleteRadio">Delete</label>
+                    <div class="btn-group" data-toggle="buttons" id="deleteRadio">
+                        <label class="btn btn-default active" >
+                            <input type="radio" autocomplete="off"
+                                   id="deleteOnRemove">On Remove
+                        </label>
+                        <label class="btn btn-default" >
+                            <input type="radio" autocomplete="off" id="deleteNever"
+                                   checked>Never
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="col-md-1 control-label"
+                           for="placeholderTextInput">Placeholder Text</label>
+
+                    <div class="input-group col-md-2">
+                        <input type="text" autocomplete="off"
+                               class="form-control"
+                               value="Give Me a File!!" id="placeholderTextInput" >
+                        <span class="input-group-btn">
+                            <button class="btn btn-default" type="button"
+                                    id="placeholderSetButton">Set</button>
+                        </span>
+                    </div>
+
+                </div>
+            </form>
+        </div>
     </div>
 </template>

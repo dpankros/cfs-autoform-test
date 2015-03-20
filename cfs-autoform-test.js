@@ -2,6 +2,7 @@
  * @fileoverview
  * @external Meteor
  * @external SimpleSchema
+ * @external CfsAutoForm
  */
 
 
@@ -55,7 +56,6 @@ Files.allow({
 
 
 if (Meteor.isClient) {
-
   Meteor.startup(function () {
     CfsAutoForm.prefs.msg.set('filePlaceholder', 'Give Me a File!!');
     CfsAutoForm.prefs.set('deleteOnRemove', true);
@@ -70,6 +70,36 @@ if (Meteor.isClient) {
     var fileObj = CfsAutoForm.getFileWithCollectionAndId('files', fileId);
     return CfsAutoForm.getThumbnailSrc(fileObj);
   };
-} // if (Meteor.isClient())
 
+  Template.opts.events({
+    'change #uploadOnSelect': function (e) {
+      console.log("Setting uploadOnSelect to true");
+      CfsAutoForm.prefs.set('uploadOnSelect', true);
+    },
+    'change #uploadOnSubmit': function (e) {
+      console.log("Setting uploadOnSelect to false");
+      CfsAutoForm.prefs.set('uploadOnSelect', false);
+    },
+    'change #deleteOnRemove': function (e) {
+      console.log("Setting deleteOnRemove to true");
+      CfsAutoForm.prefs.set('deleteOnRemove', true);
+    },
+    'change #deleteNever': function (e) {
+      console.log("Setting deleteOnRemove to false");
+      CfsAutoForm.prefs.set('deleteOnRemove', false);
+    },
+    'click #placeholderSetButton': function (e) {
+      var phText = $('#placeholderTextInput').val();
+      console.log('Placeholder text is now: ' + phText);
+      CfsAutoForm.prefs.msg.set('filePlaceholder', phText );
+    },
+    'keydown #placeholderTextInput': function (e) {
+      //If enter is pressed, click the 'set' button
+      if (e.which === 13) {
+        $('#placeholderSetButton').click();
+        return false;
+      }
+    }
+  });
+} // if (Meteor.isClient())
 
