@@ -36,7 +36,7 @@ MultiDocs.attachSchema(new SimpleSchema({
     optional: true,
     autoform: {
       type: 'cfs-files',
-      collection: 'Files'
+      collection: 'files'
     }
   }
 }));
@@ -57,6 +57,7 @@ Files.allow({
 
 if (Meteor.isClient) {
   Meteor.startup(function () {
+    //defaults.  These must match the defaults on the corresponding html page
     CfsAutoForm.prefs.msg.set('filePlaceholder', 'Give Me a File!!');
     CfsAutoForm.prefs.set('deleteOnRemove', true);
     CfsAutoForm.prefs.set('uploadOnSelect', true);
@@ -70,6 +71,7 @@ if (Meteor.isClient) {
     var fileObj = CfsAutoForm.getFileWithCollectionAndId('files', fileId);
     return CfsAutoForm.getThumbnailSrc(fileObj);
   };
+
 
   Template.opts.events({
     'change #uploadOnSelect': function (e) {

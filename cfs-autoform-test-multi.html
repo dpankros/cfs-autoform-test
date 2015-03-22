@@ -23,7 +23,7 @@
         <tr>
             <th>id</th>
             <th>Name</th>
-            <th>File Id</th>
+            <th>File Ids</th>
             <th>Thumbnails</th>
             <th>&nbsp;</th>
             <th>&nbsp;</th>
@@ -31,7 +31,7 @@
         </tr>
         </thead>
         <tbody>
-        {{#each file}}
+        {{#each doc}}
           {{> multi_row}}
         {{/each}}
         </tbody>
@@ -43,20 +43,45 @@
     <tr>
         <th scope="row">{{_id}}</th>
         <td>{{name}}</td>
-        <td>{{fileId}}</td>
+        <td>{{fileIds}}</td>
         <td>
-          {{#if hasThumbnail}}
-            {{#each thumbnail}}
+            {{#each file}}
+            <div class="col-xs-6 col-md-3">
+              {{#if hasThumbnail}}
                 <img class="thumbnail  img-thumbnail img-rounded"
                      src="{{thumbnail}}"/>
+
+              {{else}}
+                <i class="fa {{icon}} fa-4x"></i>
+              {{/if}}
+              </div>
             {{/each}}
-          {{else}}
-              <i class="fa {{icon}} fa-4x"></i>
-          {{/if}}
         </td>
-        <td><a id="removeRow" href="#">Remove</a></td>
-        <td><a class="af" id="af-{{id}}" href="#">AutoForm</a></td>
-        <td><a class="qf" id="qf-{{id}}" href="#">QuickForm</a></td>
+
+      <td>
+        <a id="removeRowM" href="#">
+                <span class="btn btn-default">
+                    <span class="glyphicon glyphicon-remove"></span>
+                    Remove
+                </span>
+        </a>
+      </td>
+      <td>
+        <a class="af" id="af-{{id}}" href="#">
+                <span class="btn btn-default">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                AutoForm
+                </span>
+        </a>
+      </td>
+      <td>
+        <a class="qf" id="qf-{{id}}" href="#">
+                <span class="btn btn-default">
+                    <span class="glyphicon glyphicon-pencil"></span>
+                QuickForm
+                    </span>
+        </a>
+      </td>
     </tr>
 </template>
 
@@ -67,7 +92,8 @@
     <div class="modal fade" id="updateAutoFormMulti">
         <div class="modal-dialog">
             <div class="modal-content">
-              {{#autoForm id="updateAFMulti" type="update" collection="Docs"
+              {{#autoForm id="updateAFMulti" type="update"
+              collection="MultiDocs"
               doc=file}}
                   <div class="modal-header">
                       <button type="button" class="close" data-dismiss="modal"
@@ -77,7 +103,7 @@
                   </div>
                   <div class="modal-body">
                     {{> afQuickField name="name"}}
-                    {{> afQuickField name="fileId" collection="files"}}
+                    {{> afQuickField name="fileIds" collection="files"}}
                   </div>
                   <div class="modal-footer">
                       <button id="updateFormClose" type="button"
@@ -108,7 +134,7 @@
                 </div>
                 <div class="modal-body">
                   {{>quickForm id="updateQFMulti" type="update"
-                  collection="Docs" doc=file}}
+                  collection="MultiDocs" doc=file}}
                 </div>
             </div>
             <!-- /.modal-content -->
@@ -131,8 +157,7 @@
                     <h4 class="modal-title">Add Mutliple Files</h4>
                 </div>
                 <div class="modal-body">
-                  {{> quickForm id="addMulti" type="insert"
-                  collection="MultiDocs"}}
+                  {{> quickForm id="addMulti" type="insert" collection="MultiDocs"}}
                 </div>
             </div>
             <!-- /.modal-content -->

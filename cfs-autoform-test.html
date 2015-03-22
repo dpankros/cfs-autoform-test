@@ -1,20 +1,22 @@
 <head>
-    <title>cfs-autoform-test</title>
+  <title>cfs-autoform-test</title>
 </head>
 <body>
+  <!-- Begin Page Layout -->
   {{> layout}}
+  <!-- End Page Layout -->
 
   <!-- Hidden elements-->
+  <!-- Single-File Modals -->
   {{>addSingle}}
   {{>updateQuickFormModalSingle}}
   {{>updateAutoFormModalSingle}}
 
-
+  <!-- Multi-File Modals -->
   {{>addMulti}}
   {{>updateQuickFormModalMulti}}
   {{>updateAutoFormModalMulti}}
-
-  {{>opts}}
+  <!-- End Hidden Elements -->
 </body>
 
 
@@ -27,100 +29,111 @@
 
   {{>navbarMulti}}
   {{>multi_files}}
+
+  {{>opts}}
 </template>
+
 
 <template name="header">
-    <div class="page-header">
-        <h1 class="Header">Cfs-Autoform Test</h1>
-    </div>
+  <div class="page-header">
+    <h1 class="Header">Cfs-Autoform Test</h1>
+  </div>
 </template>
 
+
 <template name="instructions">
-    <div class="panel panel-default">
-        <div class="panel-body">
-            <ul>
-                <li>Click <span class="btn btn-default btn-xs"><span
-                        class="glyphicon glyphicon-plus"></span>Add</span>
-                    next to Single to add a file and test the cfs-file control.
-                </li>
-                <li>Click <span class="btn btn-default btn-xs"><span
-                        class="glyphicon glyphicon-plus"></span>Add</span>
-                    next to Multi to add multiple files and test the
-                    cfs-files control.
-                </li>
-                <li>Once documents are created, options to edit or remove
-                    the document will be shown next to the document.
-                </li>
-                <li>This application serves as a test of CfsAutoForm and as
-                    an example of how to use CfsAutoForm in your own
-                    applications.
-                </li>
-            </ul>
-        </div>
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <ul>
+        <li>Click <span class="btn btn-default btn-xs"><span
+            class="glyphicon glyphicon-plus"></span>Add</span>
+          next to Single to add a file and test the cfs-file control.
+        </li>
+        <li>Click <span class="btn btn-default btn-xs"><span
+            class="glyphicon glyphicon-plus"></span>Add</span>
+          next to Multi to add multiple files and test the cfs-files control.
+        </li>
+        <li>Once documents are created, options to edit or remove the
+          document will be shown next to the document.
+        </li>
+        <li>This application serves as a test of CfsAutoForm and as an
+          example of how to use CfsAutoForm in your own applications.
+        </li>
+        <li>Also note that this part of the page is <b>not</b> CfsAutoForm.
+            It is simply a display of the mongo data to be used as a
+          reference.  The only time
+          CfsAutoForm is involved is when you click on an Add AutoForm or
+          QuickForm button.  For that reason, clicking Remove will not remove
+          the images from the Files collection; it simplly removes a row from
+          the Docs or the MultiDocs collections.
+        </li>
+      </ul>
     </div>
+  </div>
 </template>
 
 
 <template name="insertQForm">
-    <div class="form">
-      {{> quickForm id="quickForm" type="insert" collection="Docs"}}
-    </div>
+  <div class="form">
+    {{> quickForm id="quickForm" type="insert" collection="Docs"}}
+  </div>
 </template>
 
 
 <template name="opts">
-    <div class="panel panel-default">
-        <div class="panel-heading">Options</div>
-        <div class="panel-body">
-            <form class="form-horizontal">
+  <div class="panel panel-default">
+    <div class="panel-heading">Options</div>
+    <div class="panel-body">
+      <form class="form-horizontal">
 
-                <div class="form-group">
-                    <label class="col-md-1 control-label"
-                           for="uploadRadio">Upload</label>
-                    <div class="btn-group" data-toggle="buttons" id="uploadRadio">
-                        <label class="btn btn-default active" for="uploadOnSelect">
-                          <input type="radio" autocomplete="off" id="uploadOnSelect"
-                                 checked>When
-                            Selected
-                        </label>
+        <div class="form-group">
+          <label class="col-md-1 control-label"
+                 for="uploadRadio">Upload</label>
 
-                        <label class="btn btn-default" for="uploadOnSubmit">
-                            <input type="radio" autocomplete="off"
-                                   id="uploadOnSubmit">On Submit
-                        </label>
-                    </div>
-                </div>
+          <div class="btn-group" data-toggle="buttons" id="uploadRadio">
+            <label class="btn btn-default active" for="uploadOnSelect">
+              <input type="radio" autocomplete="off" id="uploadOnSelect"
+                     checked>When
+              Selected
+            </label>
 
-                <div class="form-group">
-                <label class="col-md-1 control-label" for="deleteRadio">Delete</label>
-                    <div class="btn-group" data-toggle="buttons" id="deleteRadio">
-                        <label class="btn btn-default active" >
-                            <input type="radio" autocomplete="off"
-                                   id="deleteOnRemove">On Remove
-                        </label>
-                        <label class="btn btn-default" >
-                            <input type="radio" autocomplete="off" id="deleteNever"
-                                   checked>Never
-                        </label>
-                    </div>
-                </div>
+            <label class="btn btn-default" for="uploadOnSubmit">
+              <input type="radio" autocomplete="off"
+                     id="uploadOnSubmit">On Submit
+            </label>
+          </div>
+        </div>
 
-                <div class="form-group">
-                    <label class="col-md-1 control-label"
-                           for="placeholderTextInput">Placeholder Text</label>
+        <div class="form-group">
+          <label class="col-md-1 control-label" for="deleteRadio">Delete</label>
 
-                    <div class="input-group col-md-2">
-                        <input type="text" autocomplete="off"
-                               class="form-control"
-                               value="Give Me a File!!" id="placeholderTextInput" >
+          <div class="btn-group" data-toggle="buttons" id="deleteRadio">
+            <label class="btn btn-default active">
+              <input type="radio" autocomplete="off"
+                     id="deleteOnRemove">On Remove
+            </label>
+            <label class="btn btn-default">
+              <input type="radio" autocomplete="off" id="deleteNever"
+                     checked>Never
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="col-md-1 control-label"
+                 for="placeholderTextInput">Placeholder Text</label>
+
+          <div class="input-group col-md-2">
+            <input type="text" autocomplete="off" class="form-control"
+                   value="Give Me a File!!" id="placeholderTextInput">
                         <span class="input-group-btn">
                             <button class="btn btn-default" type="button"
-                                    id="placeholderSetButton">Set</button>
+                                    id="placeholderSetButton">Set
+                            </button>
                         </span>
-                    </div>
-
-                </div>
-            </form>
+          </div>
         </div>
+      </form>
     </div>
+  </div>
 </template>

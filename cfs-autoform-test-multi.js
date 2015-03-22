@@ -27,7 +27,7 @@ if (Meteor.isClient) {
 
 
   Template.multi_files.helpers({
-    file: function () {
+    doc: function () {
       return MultiDocs.find({});
     },
     hasRows: function () {
@@ -37,7 +37,7 @@ if (Meteor.isClient) {
 
 
   Template.multi_files.events({
-    'click #removeRow': function (event, template) {
+    'click #removeRowM': function (event, template) {
       MultiDocs.remove({_id: this._id});
     }
   });
@@ -45,19 +45,23 @@ if (Meteor.isClient) {
 
   Template.multi_row.helpers({
     hasThumbnail: function () {
-      return getThumbnail(this.fileId) !== undefined;
+      return getThumbnail(this._id) !== undefined;
+    },
+
+    file: function () {
+      return Files.find({_id:{$in: this.fileIds}});
     },
 
     thumbnail: function () {
-      return Files.find(this.fileIds);
-    },
-
-    thumbnail: function () {
-      return getThumbnail(this.fileId);
+      return getThumbnail(this._id);
     },
 
     icon: function () {
       return 'fa-file';
+    },
+    fileIds: function () {
+      //allow the text to wrap by adding a whitespace character
+      return this.fileIds.join(', ');
     }
   });
 
@@ -65,11 +69,25 @@ if (Meteor.isClient) {
   Template.multi_row.events({
     'click .af': function (e) {
       Session.set('selectedId', this._id);
-      $('#updateAutoForm').modal('show');
+      $('#updateAutoFormMulti').modal('show');
     },
     'click .qf': function (e) {
       Session.set('selectedId', this._id);
-      $('#updateQuickForm').modal('show');
+      $('#updateQuickFormMulti').modal('show');
+    }
+  });
+
+
+  Template.updateQuickFormModalMulti.helpers({
+    file: function () {
+      return MultiDocs.findOne(Session.get('selectedId'));
+    }
+  });
+
+
+  Template.updateAutoFormModalMulti.helpers({
+    file: function () {
+      return MultiDocs.findOne(Session.get('selectedId'));
     }
   });
 }
