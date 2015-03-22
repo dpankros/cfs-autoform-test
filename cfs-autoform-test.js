@@ -103,5 +103,26 @@ if (Meteor.isClient) {
       }
     }
   });
+
+  Template.dbInfo.helpers({
+    docs_count: function(){ return Docs.find().count();},
+    multidocs_count: function() {return MultiDocs.find().count();},
+    files_count: function() {return Files.find().count();}
+  });
+
+  Template.dbInfo.events({
+    'click #clear-docs': function(e){
+      var objs = Docs.find();
+      objs.forEach(function(o){Docs.remove(o._id);});
+    },
+    'click #clear-multidocs': function(e){
+      var objs = MultiDocs.find();
+      objs.forEach(function(o){MultiDocs.remove(o._id);});
+    },
+    'click #clear-files': function(e) {
+      var objs = Files.find();
+      objs.forEach(function(o){Files.remove(o._id);});
+    }
+  });
 } // if (Meteor.isClient())
 

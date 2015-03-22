@@ -31,6 +31,7 @@
   {{>multi_files}}
 
   {{>opts}}
+  {{>dbInfo}}
 </template>
 
 
@@ -59,13 +60,21 @@
         <li>This application serves as a test of CfsAutoForm and as an
           example of how to use CfsAutoForm in your own applications.
         </li>
-        <li>Also note that this part of the page is <b>not</b> CfsAutoForm.
+        <li>Also note that main page is <b>not</b> CfsAutoForm.
             It is simply a display of the mongo data to be used as a
           reference.  The only time
-          CfsAutoForm is involved is when you click on an Add AutoForm or
-          QuickForm button.  For that reason, clicking Remove will not remove
-          the images from the Files collection; it simplly removes a row from
-          the Docs or the MultiDocs collections.
+          CfsAutoForm is involved is when you click on an <span class="btn
+          btn-default btn-xs"><span class="glyphicon
+          glyphicon-plus"></span>Add</span> <span class="btn btn-default
+          btn-xs"><span class="glyphicon glyphicon-pencil"></span> AutoForm </span> or
+          <span class="btn btn-default btn-xs"><span class="glyphicon
+          glyphicon-pencil"></span>QuickForm</span> button and the modal
+          popup windows appear.  For that
+          reason, clicking Remove will not remove the file from the Files
+          collection; it simplly removes a row from the Docs or the MultiDocs
+          collections. Clicking remove on a file when within a modal window,
+          if Delete on Remove is set, <i>should</i> remove that file from the
+          Files collection.
         </li>
       </ul>
     </div>
@@ -136,4 +145,58 @@
       </form>
     </div>
   </div>
+</template>
+
+<template name="dbInfo">
+  <div class="panel panel-default">
+    <div class="panel-heading">Database Information Summary</div>
+    <div class="panel-body">
+      <form class="form-horizontal">
+
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="deleteRadio">Docs
+            Collection Contains</label>
+          <div class="input-group col-md-2">
+            <input type="text" id="docs-count" class="form-control" readonly
+                   value="{{docs_count}}">
+            <span class="input-group-addon">Documents</span>
+            <span class="input-group-btn">
+              <button id="clear-docs" class="btn btn-danger"
+                      type="button">Remove All</button>
+            </span>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="deleteRadio">MultiDocs
+            Collection Contains</label>
+          <div class="input-group col-md-2">
+            <input type="text" id="multidocs-count" class="form-control" readonly
+                   value="{{multidocs_count}}">
+            <span class="input-group-addon">Documents</span>
+            <span class="input-group-btn">
+              <button id="clear-multidocs" class="btn btn-danger"
+                      type="button">Remove All</button>
+            </span>
+          </div>
+        </div>
+
+
+        <div class="form-group">
+          <label class="col-md-2 control-label" for="deleteRadio">Files
+            Collection Contains</label>
+          <div class="input-group col-md-2">
+            <input type="text" id="files-count" class="form-control" readonly
+                   value="{{files_count}}">
+            <span class="input-group-addon">Documents</span>
+            <span class="input-group-btn">
+              <button id="clear-files" class="btn btn-danger" type="button">
+                Remove All</button>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div> <!-- Panel-Body -->
+  </div> <!-- panel -->
 </template>
