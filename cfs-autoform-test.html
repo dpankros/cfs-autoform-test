@@ -43,40 +43,52 @@
 
 
 <template name="instructions">
-  <div class="panel panel-default">
-    <div class="panel-body">
-      <ul>
-        <li>Click <span class="btn btn-default btn-xs"><span
-            class="glyphicon glyphicon-plus"></span>Add</span>
-          next to Single to add a file and test the cfs-file control.
-        </li>
-        <li>Click <span class="btn btn-default btn-xs"><span
-            class="glyphicon glyphicon-plus"></span>Add</span>
-          next to Multi to add multiple files and test the cfs-files control.
-        </li>
-        <li>Once documents are created, options to edit or remove the
-          document will be shown next to the document.
-        </li>
-        <li>This application serves as a test of CfsAutoForm and as an
-          example of how to use CfsAutoForm in your own applications.
-        </li>
-        <li>Also note that main page is <b>not</b> CfsAutoForm.
-            It is simply a display of the mongo data to be used as a
-          reference.  The only time
-          CfsAutoForm is involved is when you click on an <span class="btn
-          btn-default btn-xs"><span class="glyphicon
-          glyphicon-plus"></span>Add</span> <span class="btn btn-default
-          btn-xs"><span class="glyphicon glyphicon-pencil"></span> AutoForm </span> or
-          <span class="btn btn-default btn-xs"><span class="glyphicon
-          glyphicon-pencil"></span>QuickForm</span> button and the modal
-          popup windows appear.  For that
-          reason, clicking Remove will not remove the file from the Files
-          collection; it simplly removes a row from the Docs or the MultiDocs
-          collections. Clicking remove on a file when within a modal window,
-          if Delete on Remove is set, <i>should</i> remove that file from the
-          Files collection.
-        </li>
-      </ul>
+  <div class="panel panel-default" id="accordion"  role="tablist">
+    <div class="panel-heading" role="tab" id="instructionsTitle">
+      <h4 class="panel-title">
+        <a data-toggle="collapse" data-parent="#accordion"
+           href="#instructions" aria-expanded="true"
+           aria-controls="instructions">
+          Instructions
+        </a>
+      </h4>
+    </div>
+    <div id="instructions" class="panel-collapse collapse in" role="tabpanel"
+         aria-labelledby="instructions">
+      <div class="panel-body" >
+        <ul>
+          <li>Click <span class="btn btn-default btn-xs"><span
+              class="glyphicon glyphicon-plus"></span>Add</span>
+            next to Single to add a file and test the cfs-file control.
+          </li>
+          <li>Click <span class="btn btn-default btn-xs"><span
+              class="glyphicon glyphicon-plus"></span>Add</span>
+            next to Multi to add multiple files and test the cfs-files control.
+          </li>
+          <li>Once documents are created, options to edit or remove the
+            document will be shown next to the document.
+          </li>
+          <li>This application serves as a test of CfsAutoForm and as an
+            example of how to use CfsAutoForm in your own applications.
+          </li>
+          <li>Also note that main page is <b>not</b> CfsAutoForm.
+              It is simply a display of the mongo data to be used as a
+            reference.  The only time
+            CfsAutoForm is involved is when you click on an <span class="btn
+            btn-default btn-xs"><span class="glyphicon
+            glyphicon-plus"></span>Add</span> <span class="btn btn-default
+            btn-xs"><span class="glyphicon glyphicon-pencil"></span> AutoForm </span> or
+            <span class="btn btn-default btn-xs"><span class="glyphicon
+            glyphicon-pencil"></span>QuickForm</span> button and the modal
+            popup windows appear.  For that
+            reason, clicking Remove will not remove the file from the Files
+            collection; it simplly removes a row from the Docs or the MultiDocs
+            collections. Clicking remove on a file when within a modal window,
+            if Delete on Remove is set, <i>should</i> remove that file from the
+            Files collection.
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 </template>
