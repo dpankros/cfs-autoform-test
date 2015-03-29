@@ -53,7 +53,7 @@ if (Meteor.isClient) {
     },
 
     icon: function () {
-      return 'fa-file';
+      return getIcon(this.fileId);
     }
   });
 

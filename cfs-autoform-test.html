@@ -198,11 +198,13 @@
         <div class="form-group">
           <label class="col-md-2 control-label" for="deleteRadio">Files
             Collection Contains</label>
-          <div class="input-group col-md-2">
+          <div class="input-group col-md-3">
             <input type="text" id="files-count" class="form-control" readonly
                    value="{{files_count}}">
             <span class="input-group-addon">Documents</span>
             <span class="input-group-btn">
+              <button id="prune-files" class="btn btn-warning" type="button">
+                Prune Orphaned</button>
               <button id="clear-files" class="btn btn-danger" type="button">
                 Remove All</button>
             </span>
